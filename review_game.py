@@ -324,13 +324,18 @@ if __name__ == "__main__":
     parser = ArgumentParser(
         description="Demonstrates the effect of proper sample size usage in the context of a game with cost and payoff")
 
-    parser.add_argument("--performance-bins", type=int, nargs='+', default=[5, 10, 50, 25, 10])
-    parser.add_argument("--rating-bins", type=int, nargs='+', default=[5, 10, 50, 25, 10])
-    parser.add_argument("--sample-sizes", type=int, nargs='+')
-    parser.add_argument("--population", type=int, default=200)
-    parser.add_argument("--num-repetitions", type=int, default=100)
-    parser.add_argument("--production", type=int, nargs='+', default=[1.05, 1.1, 1.15, 1.2, 1.25])
-
+    parser.add_argument("--performance-bins", type=int, nargs='+', default=[5, 10, 50, 25, 10],
+                        help="The true distribution of the population's performance")
+    parser.add_argument("--rating-bins", type=int, nargs='+', default=[5, 10, 50, 25, 10],
+                        help="The distribution the stack ranking policy assumes")
+    parser.add_argument("--sample-sizes", type=int, nargs='+',
+                        help="The sizes of stack ranking groups to test")
+    parser.add_argument("--population", type=int, default=200,
+                        help="The total size of the organization being stack ranked")
+    parser.add_argument("--num-repetitions", type=int, default=100,
+                        help="The number of Monte Carlo runs to use")
+    parser.add_argument("--production", type=int, nargs='+', default=[1.05, 1.1, 1.15, 1.2, 1.25],
+                        help="The true production of employees in each performance bin")
 
     args = parser.parse_args()
 
